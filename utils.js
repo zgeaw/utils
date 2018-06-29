@@ -174,5 +174,44 @@ export default {
             chineseStr += cnInteger;
         }
         return chineseStr;
-    }
+    },
+    /*
+    	echart图表 通用封装
+    	id 要渲染的id
+    	xAxis 坐标轴数组
+    	datas 渲染的数据
+    	echartInit('echartBar', ['2012', '2013'], ['1', '2', '3'])
+    */
+    echartInit(id, xAxis, datas) {
+	    let elm = echarts.init(document.getElementById(id));
+	    const opt = (xAxis, datas) => {
+            title: {
+                text: '标题'
+            },
+            color: ['#5b9bd5', '#ed7d31', '#a5a5a5', '#ffc000'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                }
+            },
+            xAxis: {
+                type: 'value',
+                boundaryGap: [0, 0.01],
+                splitNumber: 3
+            },
+            yAxis: {
+                type: 'category',
+                data: xAxis
+            },
+            series: [{
+                data: datas.list,
+                type: 'bar'
+            }]
+        }
+	    elm.setOption(opt(xAxis, datas));
+	    window.addEventListener('resize', () => {
+	        elm.resize()
+	    })
+	}
 }

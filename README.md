@@ -28,5 +28,8 @@
 
 	//数字转化为中文大写
 	convertCurrency(500.00) //伍佰元整
+
+	//echart图表 通用封装
+	echartInit('echartBar', ['2012', '2013'], ['1', '2', '3'])
 ```
 
