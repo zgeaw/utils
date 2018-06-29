@@ -213,5 +213,21 @@ export default {
 	    window.addEventListener('resize', () => {
 	        elm.resize()
 	    })
+	},
+	/*
+		显示数字小数位数
+		number 要处理的数字或数字字符串
+		digit 截取位数,四舍五入
+		toFixed(1.1245, 3)
+	 */
+	toFixed(number, digit){
+		if(number){
+			//也可以用第三方扩展
+			if(digit){				
+				return parseFloat(number).toFixed(digit)
+			}else{
+				return parseFloat(number)
+			}
+		}
 	}
 }
