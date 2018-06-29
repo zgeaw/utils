@@ -62,7 +62,7 @@ export default {
         }
         return newDate;
     },
-    //获取周一和周日日期，返回两种格式时间
+    //获取周一和周日 日期，返回两种格式时间
     getDateWeek() {
         var now = new Date();
         var nowTime = now.getTime();
@@ -79,7 +79,7 @@ export default {
             lastDate: sunday
         }
     },
-    //获取月初与月末日期，返回两种时间格式
+    //获取月初与月末 日期，返回两种时间格式
     getDateMonth() {
         var dateFirter = new Date();
         var dateLast = new Date();
