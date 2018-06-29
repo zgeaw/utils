@@ -48,15 +48,15 @@ export default {
         return this.getDateAll(date)
     },
     getDateAll (date, type) {
-        var year = date.getFullYear();
+        let year = date.getFullYear();
         //day获取当前几号，不足10补0
-        var day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
+        let day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
         //month获取当前月份的日期，不足10补0
-        var month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1);        
-        var hours = date.getHours();
-        var minutes = date.getMinutes();
-        var seconds = date.getSeconds();
-        var newDate = year + '-' + month + '-' + day;
+        let month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1);        
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+        let newDate = year + '-' + month + '-' + day;
         if(type == 'datetime'){
            newDate +=  ' ' + hours + ':' + minutes + ':' + seconds;
         }
@@ -64,14 +64,14 @@ export default {
     },
     //获取周一和周日 日期，返回两种格式时间
     getDateWeek() {
-        var now = new Date();
-        var nowTime = now.getTime();
-        var day = now.getDay();
-        var oneDayLong = 1000 * 60 * 60 * 24;
-        var MondayTime = nowTime - (day - 1) * oneDayLong;
-        var SundayTime = nowTime + (7 - day) * oneDayLong;
-        var monday = new Date(MondayTime);
-        var sunday = new Date(SundayTime);
+        let now = new Date();
+        let nowTime = now.getTime();
+        let day = now.getDay();
+        let oneDayLong = 1000 * 60 * 60 * 24;
+        let MondayTime = nowTime - (day - 1) * oneDayLong;
+        let SundayTime = nowTime + (7 - day) * oneDayLong;
+        let monday = new Date(MondayTime);
+        let sunday = new Date(SundayTime);
         return {
             first: this.getDateAll(monday),
             last: this.getDateAll(sunday),
@@ -81,14 +81,14 @@ export default {
     },
     //获取月初与月末 日期，返回两种时间格式
     getDateMonth() {
-        var dateFirter = new Date();
-        var dateLast = new Date();
+        let dateFirter = new Date();
+        let dateLast = new Date();
         dateFirter.setDate(1);
 
-        var currentMonth = dateLast.getMonth();
-        var nextMonth = ++currentMonth;
-        var nextMonthFirstDay = new Date(dateLast.getFullYear(), nextMonth, 1);
-        var oneDay = 1000 * 60 * 60 * 24;
+        let currentMonth = dateLast.getMonth();
+        let nextMonth = ++currentMonth;
+        let nextMonthFirstDay = new Date(dateLast.getFullYear(), nextMonth, 1);
+        let oneDay = 1000 * 60 * 60 * 24;
         dateLast = new Date(nextMonthFirstDay - oneDay)
         return {
             first: this.getDateAll(dateFirter),
@@ -99,18 +99,18 @@ export default {
     },
     //数字转化为中文大写
     convertCurrency(money) {
-        var cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
-        var cnIntRadice = new Array('', '拾', '佰', '仟');
-        var cnIntUnits = new Array('', '万', '亿', '兆');
-        var cnDecUnits = new Array('角', '分', '毫', '厘');
-        var cnInteger = '整';
-        var cnIntLast = '元';
+        let cnNums = new Array('零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖');
+        let cnIntRadice = new Array('', '拾', '佰', '仟');
+        let cnIntUnits = new Array('', '万', '亿', '兆');
+        let cnDecUnits = new Array('角', '分', '毫', '厘');
+        let cnInteger = '整';
+        let cnIntLast = '元';
         //最大处理的数字
-        var maxNum = 999999999999999.9999;
-        var integerNum;
-        var decimalNum;
-        var chineseStr = '';
-        var parts;
+        let maxNum = 999999999999999.9999;
+        let integerNum;
+        let decimalNum;
+        let chineseStr = '';
+        let parts;
         if (money == '') {
             return '';
         }
@@ -135,13 +135,13 @@ export default {
         }
         //获取整型部分转换
         if (parseInt(integerNum, 10) > 0) {
-            var zeroCount = 0;
-            var IntLen = integerNum.length;
-            for (var i = 0; i < IntLen; i++) {
-                var n = integerNum.substr(i, 1);
-                var p = IntLen - i - 1;
-                var q = p / 4;
-                var m = p % 4;
+            let zeroCount = 0;
+            let IntLen = integerNum.length;
+            for (let i = 0; i < IntLen; i++) {
+                let n = integerNum.substr(i, 1);
+                let p = IntLen - i - 1;
+                let q = p / 4;
+                let m = p % 4;
                 if (n == '0') {
                     zeroCount++;
                 } else {
@@ -160,9 +160,9 @@ export default {
         }
         //小数部分
         if (decimalNum != '') {
-            var decLen = decimalNum.length;
-            for (var i = 0; i < decLen; i++) {
-                var n = decimalNum.substr(i, 1);
+            let decLen = decimalNum.length;
+            for (let i = 0; i < decLen; i++) {
+                let n = decimalNum.substr(i, 1);
                 if (n != '0') {
                     chineseStr += cnNums[Number(n)] + cnDecUnits[i];
                 }
