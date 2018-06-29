@@ -34,5 +34,9 @@
 
 	//显示数字小数位数
 	toFixed(1.1245, 3) //1.125
+
+	//扩展原生字符串属性，需谨慎命名
+	protoType('newString')
+	'abc,123.aaa'.newString() //abc123aaa
 ```
 
