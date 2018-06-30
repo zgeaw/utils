@@ -230,11 +230,11 @@ export default {
 			}
 		}
 	},
-	/*
+	/*protoType('newString')
+		'abc,123.aaa'.newString() //abc123aaa
 		扩展原生字符串属性，需谨慎命名
 		attr 要扩展的属性
-		protoType('newString')
-		'abc,123.aaa'.newString() //abc123aaa
+		
 	 */
 	protoType(attr){
 		 if(typeof String.prototype[attr] == 'undefined'){
