@@ -38,5 +38,9 @@
 	//扩展原生字符串属性，需谨慎命名
 	protoType('newString')
 	'abc,123.aaa'.newString() //abc123aaa
+	
+	
+	//检测图片坏链
+	badChain('#hadimg') 
 ```
 

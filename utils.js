@@ -244,5 +244,18 @@ export default {
                 return s;
             }
         }
+	},
+	//检测图片坏链
+	badChain(id) {
+		let _sel = $(id);
+		_sel.each(function() {//执行遍历
+			let _this = $(this);
+			if (_this.attr('src') == '') {//判断src属性是否为空
+				_this.attr("src", "images/nopic.jpg");//设置src属性
+			}
+			_this.error(function() {//加载错误执行
+				_this.attr("src", "images/nopic.jpg");
+			});
+		});
 	}
 }
