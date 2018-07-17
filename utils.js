@@ -239,7 +239,7 @@ export default {
 	protoType(attr){
 		 if(typeof String.prototype[attr] == 'undefined'){
             String.prototype[attr] = function(){
-                var s = this;				
+                let s = this;				
                 s = s.replace(/\.|\,/g, '');//过滤逗号和点
                 return s;
             }
@@ -257,5 +257,53 @@ export default {
 				_this.attr("src", "images/nopic.jpg");
 			});
 		});
+	},
+	//设置cookie
+	setCookie(cname, cvalue, exdays) {
+		let exp = new Date();
+		exp.setTime(exp.getTime() + exdays*24*60*60*1000);
+		document.cookie = cname + "="+ escape (cvalue) + ";expires=" + exp.toGMTString();
+	},
+	//读取cookie
+	getCookie(cname){
+		let name = cname + "=";
+		let ca = document.cookie.split(';');
+		for (let i = 0; i < ca.length; i++) {
+			let c = ca[i];
+			while (c.charAt(0) == ' ') c = c.substring(1);
+			if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+		}
+		return "";	
+	},
+	//删除cookie
+	removeCookie(cname){
+		this.setCookie(cname, "", -1)
+	},
+	//设置缓存
+	setCache(cname, cvalue){
+		window.localStorage.setItem(cname, JSON.stringify(cvalue))
+	},
+	//读取缓存
+	getCache(cname){
+		return window.localStorage.getItem(cname)
+	},
+	//删除缓存
+	removeCache(){
+		window.localStorage.clear()
+	},
+	//判断是否是数组 返回1 整数 2正浮点 3 负浮点数
+	isNumber(val){
+		let regNum = /^\\d+$/; //整数
+		let regPos = /^\d+(\.\d+)?$/; //正浮点数
+		let regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+		if(regNum.test(val)){			
+			return 1;
+		}else if(regPos.test(val)){			
+			return 2;
+		}else if(regNeg.test(val)){			
+			return 3;
+		}else{
+			return 0;
+		}
 	}
 }

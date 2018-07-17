@@ -37,10 +37,30 @@
 
 	//扩展原生字符串属性，需谨慎命名
 	protoType('newString')
-	'abc,123.aaa'.newString() //abc123aaa
-	
+	'abc,123.aaa'.newString() //abc123aaa	
 	
 	//检测图片坏链
 	badChain('#hadimg') 
+	
+	//设置cookie
+	setCookie('id', 123, 7) 
+	
+	//读取cookie
+	getCookie('id') 
+	
+	//删除cookie
+	removeCookie('id') 
+	
+	//设置缓存
+	setCache('name', 'abc') 
+	
+	//读取缓存
+	getCache('name') 
+	
+	//删除缓存
+	removeCache() 
+	
+	//判断是否是数组 返回1 整数 2正浮点 3 负浮点数
+	isNumber(666) 
 ```
 
