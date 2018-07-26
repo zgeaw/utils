@@ -259,10 +259,10 @@ export default {
 		});
 	},
 	//设置cookie
-	setCookie(cname, cvalue, exdays) {
+	setCookie(cname, cvalue, exdays = 7) {
 		let exp = new Date();
 		exp.setTime(exp.getTime() + exdays*24*60*60*1000);
-		document.cookie = cname + "="+ escape (cvalue) + ";expires=" + exp.toGMTString();
+		document.cookie = cname + "="+ escape (cvalue) + "; path=/; expires=" + exp.toGMTString();
 	},
 	//读取cookie
 	getCookie(cname){
