@@ -266,14 +266,16 @@ export default {
 	},
 	//读取cookie
 	getCookie(cname){
-		let name = cname + "=";
-		let ca = document.cookie.split(';');
-		for (let i = 0; i < ca.length; i++) {
-			let c = ca[i];
-			while (c.charAt(0) == ' ') c = c.substring(1);
-			if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+		let strcookie = document.cookie;//获取cookie字符串
+		let arrcookie = strcookie.split("; ");//分割
+		//遍历匹配
+		for ( let i = 0; i < arrcookie.length; i++) {
+			let arr = arrcookie[i].split("=");
+			if (arr[0] == cname){
+				return arr[1];
+			}
 		}
-		return "";	
+		return "";
 	},
 	//删除cookie
 	removeCookie(cname){
