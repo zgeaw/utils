@@ -307,5 +307,13 @@ export default {
 		}else{
 			return 0;
 		}
+	},
+	/*
+		获取数组中的最大值或最小值
+		type = max 最大值
+		type = min 最小值
+	*/
+	getArrayMax(array, type = max){
+		return Math[type].apply(Math, array);
 	}
 }
