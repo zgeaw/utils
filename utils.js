@@ -315,5 +315,47 @@ export default {
 	*/
 	getArrayMax(array, type = max){
 		return Math[type].apply(Math, array);
-	}
+	},
+    //倒计时
+    countDown(second){
+        let time = ''
+        const checkTime = (params) => {
+            if (params.toString().length == 1) {
+                params = "0" + params;
+            }
+            return params;
+        }
+        if(second){            
+            let s = second % 60 //秒
+            let m = parseInt(second / 60 % 60) //分
+            let h = parseInt(second / 3600) //时
+            let interval = setInterval(function () {
+                s--
+                s = checkTime(s)
+                m = checkTime(m)
+                h = checkTime(h)
+                if(s <= 0){
+                    s = 59
+                    s = checkTime(s)
+                    m--
+                    m = checkTime(m)
+                    if(m <= 0){
+                        m = 59
+                        m = checkTime(m)
+                        h--
+                        h = checkTime(h)
+                        if(h <= 0){
+                            time = ''
+                            clearInterval(interval)
+                        }
+                    }
+                }
+                time = h + ":" + m + ":" + s
+                if(time && (h > 0 || time != '-1:59:59')){
+                    //倒计时逻辑写到这里
+                    console.log(time)
+                }
+            }, 1000)
+        }
+    }
 }
