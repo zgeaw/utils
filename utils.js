@@ -359,7 +359,7 @@ export default {
         }
     },
 	//元素滚动至固定位置
-	scrollElement(class, height = 0){
-		document.getElementsByClassName('scroll-popup')[0].scrollTop = height
+	scrollElement(id, height = 0){
+		document.getElementsByClassName(id)[0].scrollTop = height
 	}
 }
