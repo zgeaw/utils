@@ -65,5 +65,8 @@
 	
 	//获取数组中的最大值或最小值
 	getArrayMax([1,2,3], 'max') 
+	
+	//元素滚动至固定位置
+	scrollElement('div', 0) 
 ```
 
