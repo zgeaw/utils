@@ -4,45 +4,45 @@ export default {
 		数组排序 
 		name 排序字段 
 		用法 Array.setSort('creationTime')
-	*/
-	setSort(name) {
-		return function(o, p){
-			let a, b;
-			if (typeof o === "object" && typeof p === "object" && o && p) {
-				a = o[name];
-				b = p[name];
-				if (a === b) {
-					return 0;
-				}
-				if (typeof a === typeof b) {
-					return a < b ? -1 : 1;
-				}
-				return typeof a < typeof b ? -1 : 1;
-			}
-			else {
-				throw ("error");
-			}
-		}
-	},
+       */
+       setSort(name) {
+          return function(o, p){
+             let a, b;
+             if (typeof o === "object" && typeof p === "object" && o && p) {
+                a = o[name];
+                b = p[name];
+                if (a === b) {
+                   return 0;
+               }
+               if (typeof a === typeof b) {
+                   return a < b ? -1 : 1;
+               }
+               return typeof a < typeof b ? -1 : 1;
+           }
+           else {
+            throw ("error");
+        }
+    }
+},
 	/*
 		获取地址栏参数
 		key 需要获取的参数
 		用法 getUrlStr('id')  
-	*/
-	getUrlStr(key) {
-		let url = window.location.search;
-		let reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
-		let result = url.substr(1).match(reg);
-		return result ? decodeURIComponent(result[2]) : null;
-	},
+       */
+       getUrlStr(key) {
+          let url = window.location.search;
+          let reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)");
+          let result = url.substr(1).match(reg);
+          return result ? decodeURIComponent(result[2]) : null;
+      },
 	/*
 		获取日期函数 返回2018-06-06
 		AddDayCount 天数
 		getDateStr(0) //获取当前日期
 		getDateStr(-10) //获取前10天日期
 		getDateStr(20) //获取后20天日期
-	*/
-    getDateStr(AddDayCount){
+       */
+       getDateStr(AddDayCount){
         let date = new Date(); 
         date.setDate(date.getDate() + AddDayCount);
         return this.getDateAll(date)
@@ -58,10 +58,10 @@ export default {
         let seconds = date.getSeconds();
         let newDate = year + '-' + month + '-' + day;
         if(type == 'datetime'){
-           newDate +=  ' ' + hours + ':' + minutes + ':' + seconds;
-        }
-        return newDate;
-    },
+         newDate +=  ' ' + hours + ':' + minutes + ':' + seconds;
+     }
+     return newDate;
+ },
     //获取周一和周日 日期，返回两种格式时间
     getDateWeek() {
         let now = new Date();
@@ -181,10 +181,10 @@ export default {
     	xAxis 坐标轴数组
     	datas 渲染的数据
     	echartInit('echartBar', ['2012', '2013'], ['1', '2', '3'])
-    */
-    echartInit(id, xAxis, datas) {
-	    let elm = echarts.init(document.getElementById(id));
-	    const opt = (xAxis, datas) => {
+        */
+        echartInit(id, xAxis, datas) {
+           let elm = echarts.init(document.getElementById(id));
+           const opt = (xAxis, datas) => {
             title: {
                 text: '标题'
             },
@@ -209,19 +209,19 @@ export default {
                 type: 'bar'
             }]
         }
-	    elm.setOption(opt(xAxis, datas));
-	    window.addEventListener('resize', () => {
-	        elm.resize()
-	    })
-	},
+        elm.setOption(opt(xAxis, datas));
+        window.addEventListener('resize', () => {
+           elm.resize()
+       })
+    },
 	/*
 		显示数字小数位数
 		number 要处理的数字或数字字符串
 		digit 截取位数,四舍五入
 		toFixed(1.1245, 3)
-	 */
-	toFixed(number, digit){
-		if(number){
+      */
+      toFixed(number, digit){
+          if(number){
 			//也可以用第三方扩展
 			if(digit){				
 				return parseFloat(number).toFixed(digit)
@@ -235,16 +235,16 @@ export default {
 		扩展原生字符串属性，需谨慎命名
 		attr 要扩展的属性
 		
-	 */
-	protoType(attr){
-		 if(typeof String.prototype[attr] == 'undefined'){
+      */
+      protoType(attr){
+         if(typeof String.prototype[attr] == 'undefined'){
             String.prototype[attr] = function(){
                 let s = this;				
                 s = s.replace(/\.|\,/g, '');//过滤逗号和点
                 return s;
             }
         }
-	},
+    },
 	//检测图片坏链
 	badChain(id) {
 		let _sel = $(id);
@@ -312,10 +312,10 @@ export default {
 		获取数组中的最大值或最小值
 		type = max 最大值
 		type = min 最小值
-	*/
-	getArrayMax(array, type = max){
-		return Math[type].apply(Math, array);
-	},
+       */
+       getArrayMax(array, type = max){
+          return Math[type].apply(Math, array);
+      },
     //倒计时
     countDown(second){
         let time = ''
@@ -405,5 +405,26 @@ export default {
   			timeSpanStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute;
   		}
   		return timeSpanStr;
-  	}
+  	},
+    // uuid 生成工具
+    getUuid(len = 20, radix) {
+        let chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.split('');
+        let uuid = [];        
+        radix = radix || chars.length;
+        if (len) {
+            for (let i = 0; i < len; i++) uuid[i] = chars[0 | Math.random() * radix];
+        } else {
+            let r;
+            uuid[8] = uuid[13] = uuid[18] = uuid[23] = '-';
+            uuid[14] = '4';
+            for (let i = 0; i < 36; i++) {
+                if (!uuid[i]) {
+                    r = 0 | Math.random() * 16;
+                    uuid[i] = chars[(i == 19) ? (r & 0x3) | 0x8 : r];
+                }
+            }
+        }
+
+        return uuid.join('');
+    }
 }
