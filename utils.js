@@ -426,5 +426,30 @@ export default {
         }
 
         return uuid.join('');
-    }
+    },
+	//滚动到顶部
+	goTop(id){	
+		let $goTop = $(id);
+		let $footerBtns = $('.footer .footerBtns');
+		let scrollHeight = 0;
+		$goTop.click(function() {
+			$('body,html').animate({
+				"scrollTop" : "0"
+			}, 500);
+		});
+		//监听浏览器滚动
+		$(window).scroll(function(){
+			let scrollTop = $(this).scrollTop();
+			if(scrollHeight <= scrollTop){
+				$goTop.show(300);
+				$footerBtns.addClass('close');
+			}else{
+				$goTop.hide(300);
+				$footerBtns.removeClass('close');
+			}
+			setTimeout(function(){
+				scrollHeight = scrollTop;
+			},0);
+		});
+	}
 }
