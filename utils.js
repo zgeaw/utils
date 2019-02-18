@@ -459,7 +459,7 @@ export default {
 	removeAaary(_arr, _obj){
 		let length = _arr.length;
 		for (let i = 0; i < length; i++) {
-			if (_arr[i] == _obj) {
+			if (JSON.stringify(_arr[i]) == JSON.stringify(_obj)) {
 				if (i == 0) {
 					_arr.shift(); //删除并返回数组的第一个元素
 					return _arr;
