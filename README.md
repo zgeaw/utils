@@ -80,5 +80,8 @@
 	
 	//滚动到顶部
 	goTop('#goTop') 
+	
+	//删除数组中的某个对象
+	removeAaary(array, obj)
 ```
 
