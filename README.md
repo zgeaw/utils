@@ -83,5 +83,8 @@
 	
 	//删除数组中的某个对象
 	removeAaary(array, obj)
+	
+	//文件流转base64
+	fileToBase64(file)
 ```
 
