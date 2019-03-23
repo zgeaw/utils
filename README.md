@@ -85,6 +85,9 @@
 	removeAaary(array, obj)
 	
 	//文件流转base64
-	fileToBase64(file)
+	//file 文件流转 callBack 回调函数
+	fileToBase64(file, (base64){
+		console.log(base64)
+	})
 ```
 

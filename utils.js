@@ -475,23 +475,16 @@ export default {
 			}
 		}
 	},
-	//文件流转base64
-	fileToBase64(file){
-		let  fd = new FileReader();
+	/*
+	文件流转base64
+	file 文件流转
+	callBack 回调函数
+	*/
+	fileToBase64(file, callBack){
+		let fd = new FileReader();
 		fd.readAsDataURL(file);
-		let VM = this
 		fd.onload = (e) => {
-			canvasResize(file, {
-				width: 1200,
-				height: 1200,
-				crop: false,
-				quality: 0.8,
-				rotate: 0,
-				callback(baseStr) {
-					//转换过的base64
-					console.log(baseStr)
-				}
-			})
+			callBack(e.target.result)
 		}
 	}
 }
