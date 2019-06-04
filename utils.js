@@ -1,4 +1,10 @@
 /*常用函数封装 32237384@qq.com*/
+//百度获取当前城市API  
+function showLocation(data) {
+	//用户所在城市，可以获取省市县区，以及经纬度坐标
+	var city = data.content.address_detail.city;
+	console.log(city);
+}
 export default {
 	/*
 		数组排序 
@@ -486,5 +492,9 @@ export default {
 		fd.onload = (e) => {
 			callBack(e.target.result)
 		}
+	},
+	//百度获取当前城市API  
+	getLocation() {
+		$.getScript("http://api.map.baidu.com/location/ip?ak=skb8j0Ttecitx0qGInpCfVnHlfR5WgFV&callback=showLocation");
 	}
 }
