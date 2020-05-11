@@ -48,7 +48,7 @@ export default {
 		getDateStr(-10) //获取前10天日期
 		getDateStr(20) //获取后20天日期
        */
-       getDateStr(AddDayCount){
+       getDateStr(AddDayCount, type = 'datetime'){
         let date = new Date(); 
         date.setDate(date.getDate() + AddDayCount);
         return this.getDateAll(date)
@@ -57,11 +57,11 @@ export default {
         let year = date.getFullYear();
         //day获取当前几号，不足10补0
         let day = date.getDate() > 9 ? date.getDate() : "0" + date.getDate();
-        //month获取当前月份的日期，不足10补0
-        let month = (date.getMonth() + 1) > 9 ? (date.getMonth() + 1) : "0" + (date.getMonth() + 1);        
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let seconds = date.getSeconds();
+        //month获取当前月份的日期，不足10补0    
+        let month = date.getMonth() + 1 > 9 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)
+		let hours = date.getHours() > 9 ? date.getHours() : '0' + date.getHours()
+		let minutes = date.getMinutes() > 9 ? date.getMinutes() : '0' + date.getMinutes()
+		let seconds = date.getSeconds() > 9 ? date.getSeconds() : '0' + date.getSeconds()
         let newDate = year + '-' + month + '-' + day;
         if(type == 'datetime'){
          newDate +=  ' ' + hours + ':' + minutes + ':' + seconds;
