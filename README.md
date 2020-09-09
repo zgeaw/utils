@@ -89,5 +89,7 @@
 	fileToBase64(file, (base64){
 		console.log(base64)
 	})
+	//计算两个日期时间差
+	getDays('2020-05-09', '2020-09-09')
 ```
 
