@@ -479,5 +479,18 @@ export default {
     let minusDays = Math.floor((t2 - t1) / dateTime) //计算出两个日期的天数差
     let days = Math.abs(minusDays) //取绝对值
     return days
+  },
+  /*
+	重新生成对应的数组
+	array 原数组
+	subGroupLength 每几条重新生成新数组
+	*/
+  handleList(array, subGroupLength){
+	let index = 0
+	const newArray = []
+	while (index < array.length) {
+	  newArray.push(array.slice(index, (index += subGroupLength)))
+	}
+	return newArray
   }
 }
